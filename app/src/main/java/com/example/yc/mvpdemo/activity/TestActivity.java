@@ -14,6 +14,8 @@ import com.example.yc.mvpdemo.utils.LogUtil;
 import com.google.gson.Gson;
 
 /**
+ * 最开始页面
+ * 
  * Created by YuChao
  * <p>
  */
