@@ -5,9 +5,6 @@ import com.example.yc.mvpdemo.bean.LoginResponseBean;
 import com.example.yc.mvpdemo.contract.Fragment1Contract;
 import com.example.yc.mvpdemo.fragment.Fragment1;
 import com.example.yc.mvpdemo.model.LoginModel;
-import com.example.yc.mvpdemo.mvp.IModel;
-
-import java.util.HashMap;
 
 /**
  * Created by YuChao on 2017/6/11.

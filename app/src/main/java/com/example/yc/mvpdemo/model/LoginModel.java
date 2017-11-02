@@ -2,9 +2,9 @@ package com.example.yc.mvpdemo.model;
 
 import android.support.annotation.NonNull;
 
-import com.example.yc.mvpdemo.config.ProApplication;
 import com.example.yc.mvpdemo.base.BaseModel;
 import com.example.yc.mvpdemo.bean.LoginResponseBean;
+import com.example.yc.mvpdemo.config.ProApplication;
 import com.example.yc.mvpdemo.exception.ApiException;
 import com.example.yc.mvpdemo.subscriber.CommonSubscriber;
 import com.example.yc.mvpdemo.transformer.CommonTransformer;

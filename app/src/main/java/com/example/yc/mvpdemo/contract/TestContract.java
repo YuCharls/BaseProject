@@ -1,6 +1,5 @@
 package com.example.yc.mvpdemo.contract;
 
-import com.example.yc.mvpdemo.bean.LoginResponseBean;
 import com.example.yc.mvpdemo.bean.TestBean;
 
 /**

@@ -10,7 +10,6 @@ import android.os.Environment;
 import com.example.yc.mvpdemo.R;
 import com.example.yc.mvpdemo.utils.LogUtil;
 
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;

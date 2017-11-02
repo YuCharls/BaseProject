@@ -2,6 +2,7 @@ package com.example.yc.mvpdemo.fragment;
 
 
 import android.view.View;
+
 import com.example.yc.mvpdemo.R;
 import com.example.yc.mvpdemo.base.BaseFragment;
 import com.example.yc.mvpdemo.base.BasePresenter;

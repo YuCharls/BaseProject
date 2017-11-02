@@ -1,12 +1,9 @@
 package com.example.yc.mvpdemo.base;
 
-import com.example.yc.mvpdemo.mvp.IView;
-import com.example.yc.mvpdemo.mvp.IModel;
 import com.example.yc.mvpdemo.mvp.IPresenter;
-
+import com.example.yc.mvpdemo.mvp.IView;
 
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
 
 /**
  * Created by YuChao

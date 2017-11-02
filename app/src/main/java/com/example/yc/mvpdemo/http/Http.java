@@ -3,36 +3,28 @@ package com.example.yc.mvpdemo.http;
 
 import com.example.yc.mvpdemo.config.ProApplication;
 import com.example.yc.mvpdemo.url.UrlHelper;
-import com.example.yc.mvpdemo.utils.AESUtil;
 import com.example.yc.mvpdemo.utils.LogUtil;
 import com.example.yc.mvpdemo.utils.NetworkUtil;
 import com.example.yc.mvpdemo.utils.SPUtil;
 
-
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.charset.UnsupportedCharsetException;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
-import okio.Buffer;
-import okio.BufferedSource;
 import retrofit2.Retrofit;
-//import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
+
+//import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 
 /**
  * Created by YuChao

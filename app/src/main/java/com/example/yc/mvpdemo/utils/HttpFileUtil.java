@@ -2,14 +2,8 @@ package com.example.yc.mvpdemo.utils;
 
 import android.content.Context;
 
-
-import com.example.yc.mvpdemo.interfaces.HttpFileCallBack;
-
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

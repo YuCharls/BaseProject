@@ -1,15 +1,11 @@
 package com.example.yc.mvpdemo.transformer;
 
 
-import android.text.TextUtils;
-
-
 import com.example.yc.mvpdemo.base.BaseBean;
 import com.example.yc.mvpdemo.exception.ErrorType;
 import com.example.yc.mvpdemo.exception.ExceptionEngine;
 import com.example.yc.mvpdemo.exception.ServerException;
 import com.example.yc.mvpdemo.utils.GsonUtil;
-import com.example.yc.mvpdemo.utils.SPUtil;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;

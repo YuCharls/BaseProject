@@ -10,7 +10,6 @@ import org.json.JSONObject;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 
 // 拼接报文头部
 public class ToJsonHeader {
