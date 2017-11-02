@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 
 /**
  * 最开始页面
- * 
+ * <p>
  * Created by YuChao
  * <p>
  */
@@ -24,9 +24,9 @@ public class TestActivity extends BaseActiviy<TestPresenter>
 
     private static final String TAG = "TestActivity";
 
-    EditText inputEmail;
-    EditText inputPassword;
-    AppCompatButton btnLogin;
+    EditText inputMonth;
+    EditText inputDay;
+    AppCompatButton btnClick;
 
     /**
      * 初始化 布局
@@ -43,9 +43,9 @@ public class TestActivity extends BaseActiviy<TestPresenter>
      */
     @Override
     protected void initView() {
-        inputEmail = getViewById(R.id.input_email);
-        inputPassword = getViewById(R.id.input_password);
-        btnLogin = getViewById(R.id.btn_login);
+        inputMonth = getViewById(R.id.input_month);
+        inputDay = getViewById(R.id.input_day);
+        btnClick = getViewById(R.id.btn_click);
 
     }
 
@@ -62,7 +62,7 @@ public class TestActivity extends BaseActiviy<TestPresenter>
      */
     @Override
     protected void initListener() {
-        btnLogin.setOnClickListener(this);
+        btnClick.setOnClickListener(this);
     }
 
     /**
@@ -73,11 +73,11 @@ public class TestActivity extends BaseActiviy<TestPresenter>
     @Override
     protected void getViewOnClick(int viewId) {
         switch (viewId) {
-            case R.id.btn_login:
-                LogUtil.i(TAG, ",getViewOnClick: " + getUserName() + getUserName());
+            case R.id.btn_click:
+                LogUtil.i(TAG, ",getViewOnClick: " + getMonth() + getMonth());
 
                 //调用 推荐者中的 登录业务方法
-                mPresenter.clickTest(getUserName(), getPwd());
+                mPresenter.clickTest(getMonth(), getDay());
 
                 break;
         }
@@ -96,31 +96,32 @@ public class TestActivity extends BaseActiviy<TestPresenter>
     }
 
     @Override
-    public String getUserName() {
-        String inputUserNeme;
-        inputUserNeme = inputEmail.getText().toString().trim();
-        return inputUserNeme;
+    public String getMonth() {
+        String inputMonth;
+        inputMonth = this.inputMonth.getText().toString().trim();
+        return inputMonth;
     }
 
     @Override
-    public String getPwd() {
-        String inputMyPassword;
-        inputMyPassword = inputPassword.getText().toString().trim();
-        return inputMyPassword;
+    public String getDay() {
+        String inputDay;
+        inputDay = this.inputDay.getText().toString().trim();
+        return inputDay;
     }
+
     /**
      * 请求成功 返回的数据
      *
-     * @param str 响应数据Bean对应的数据
+     * @param beanStr 响应数据Bean对应的数据
      */
     @Override
-    public void onSuccess(TestBean str) {
+    public void onSuccess(TestBean beanStr) {
 
-        mToast(new Gson().toJson(str));
-
+        mToast(new Gson().toJson(beanStr));
         Intent intent = new Intent(this, SlideMainActivity.class);
-        startActivity(intent); 
+        startActivity(intent);
     }
+
     /**
      * 请求失败 返回的数据
      *
@@ -130,5 +131,5 @@ public class TestActivity extends BaseActiviy<TestPresenter>
     public void onFail(String failMsg) {
         mToast(failMsg);
     }
-    
+
 }

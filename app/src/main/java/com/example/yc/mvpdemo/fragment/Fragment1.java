@@ -1,6 +1,5 @@
 package com.example.yc.mvpdemo.fragment;
 
-import android.app.Activity;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.EditText;
@@ -30,11 +29,7 @@ public class Fragment1 extends BaseFragment<Fragment1Presenter>
     BGARefreshLayout mRefreshLayout;//刷新 布局
     private String phone;
     private String password;
-
-    public Fragment1(Activity thisActiviy) {
-        super(thisActiviy);
-    }
-
+    
     @Override
     protected int getFragmentLayoutId() {
         return R.layout.fragment1;

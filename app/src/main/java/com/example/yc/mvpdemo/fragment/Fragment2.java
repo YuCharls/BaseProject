@@ -1,8 +1,7 @@
 package com.example.yc.mvpdemo.fragment;
 
-import android.app.Activity;
-import android.view.View;
 
+import android.view.View;
 import com.example.yc.mvpdemo.R;
 import com.example.yc.mvpdemo.base.BaseFragment;
 import com.example.yc.mvpdemo.base.BasePresenter;
@@ -12,11 +11,7 @@ import com.example.yc.mvpdemo.base.BasePresenter;
  */
 
 public class Fragment2 extends BaseFragment {
-
-    public Fragment2(Activity thisActiviy) {
-        super(thisActiviy);
-    }
-
+    
     @Override
     protected int getFragmentLayoutId() {
         return R.layout.fragment2;

@@ -16,8 +16,8 @@ import com.example.yc.mvpdemo.utils.LogUtil;
  * Created by YuChao
  */
 
-public abstract class BaseFragment<P extends BasePresenter> extends Fragment implements
-        IView, View.OnClickListener {
+public abstract class BaseFragment<P extends BasePresenter> extends Fragment
+        implements IView, View.OnClickListener {
 
 
     //贴附的activity
@@ -58,11 +58,17 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         LogUtil.i(mClassName + " ----------> onCreateView");
-        if (mRootView == null) {
+        if (null != mRootView) {
+            ViewGroup parent = (ViewGroup) mRootView.getParent();
+            if (null != parent) {
+                parent.removeView(mRootView);
+            }
+        } else {
             mRootView = inflater.inflate(getFragmentLayoutId(), container, false);
-
             mPresenter = getLoadPresenter();
             if (mPresenter != null) {
                 if (getActivity() != null) {
@@ -74,6 +80,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
             initListener();
             initData();
         }
+
         return mRootView;
 
 
@@ -128,11 +135,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         super.onDetach();
         LogUtil.i(mClassName + " ----------> onDetach");
     }
-
-    protected BaseFragment(Activity activity) {
-        mActivity = activity;
-    }
-
 
     //获取依附的Activity
     public Activity getMyActivity() {
@@ -216,5 +218,5 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         Toast.makeText(mActivity, contentId, Toast.LENGTH_SHORT).show();
     }
 
-    
+
 }

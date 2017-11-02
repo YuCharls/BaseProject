@@ -12,11 +12,11 @@ import com.example.yc.mvpdemo.bean.TestBean;
 public class TestContract {
 
     public interface TestView {
-        String getUserName();
+        String getMonth();
 
-        String getPwd();
+        String getDay();
 
-        void onSuccess(TestBean str);
+        void onSuccess(TestBean beanStr);
 
         void onFail(String failMsg);
     }

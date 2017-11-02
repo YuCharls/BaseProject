@@ -29,7 +29,7 @@
             android:layout_marginTop="8dp">
 
             <EditText
-                android:id="@+id/input_email"
+                android:id="@+id/input_month"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="month"
@@ -45,7 +45,7 @@
             android:layout_marginTop="8dp">
 
             <EditText
-                android:id="@+id/input_password"
+                android:id="@+id/input_day"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="day"
@@ -53,7 +53,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_click"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"

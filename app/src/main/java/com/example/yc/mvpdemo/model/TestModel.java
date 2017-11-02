@@ -54,7 +54,7 @@ public class TestModel extends BaseModel {
         params.put("day", day);
         params.put("key", "c583b7e7f822c199c2ec65025b322511");
 
-        httpService.test(params)
+        httpService.loginPost(params)
                 .compose(new CommonTransformer<String>())
                 .subscribe(new CommonSubscriber<TestBean>(ProApplication.getmContext(), new TestBean()) {
 

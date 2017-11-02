@@ -1,10 +1,17 @@
 package com.example.yc.mvpdemo.activity;
 
-import android.widget.FrameLayout;
+
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.yc.mvpdemo.R;
 import com.example.yc.mvpdemo.base.BaseActiviy;
+import com.example.yc.mvpdemo.fragment.Fragment1;
+import com.example.yc.mvpdemo.fragment.Fragment2;
+import com.example.yc.mvpdemo.fragment.Fragment3;
+import com.example.yc.mvpdemo.fragment.Fragment4;
 import com.example.yc.mvpdemo.mvp.IView;
 import com.example.yc.mvpdemo.presenter.SlideMainPresenter;
 
@@ -19,10 +26,18 @@ public class SlideMainActivity extends BaseActiviy<SlideMainPresenter> implement
     private LinearLayout wddd_item;
     private LinearLayout fkw_item;
     private LinearLayout wdzx_item;
-    private FrameLayout mContainer;
+
+
+    private Fragment1 mainFragment1 = new Fragment1();
+    private Fragment2 mainFragment2 = new Fragment2();
+    private Fragment3 mainFragment3 = new Fragment3();
+    private Fragment4 mainFragment4 = new Fragment4();
+    private FragmentTransaction mFragmentTransaction;
+    private Fragment fragment;
 
 
     @Override
+
     protected int getLayoutId() {
         return R.layout.activity_main_layout_above;
     }
@@ -33,14 +48,14 @@ public class SlideMainActivity extends BaseActiviy<SlideMainPresenter> implement
         wddd_item = (LinearLayout) findViewById(R.id.wddd_item);
         fkw_item = (LinearLayout) findViewById(R.id.fkw_item);
         wdzx_item = (LinearLayout) findViewById(R.id.wdzx_item);
-        //中心主Fragment页面
-        mContainer = (FrameLayout) findViewById(R.id.content_frame);
     }
 
     @Override
     protected void initData() {
-        mPresenter.showFragment(R.id.wdcy_item);
-        switchBottomIcon(R.id.wdcy_item);
+        fragment = mainFragment1;
+        mFragmentTransaction = getSupportFragmentManager().beginTransaction();
+        mFragmentTransaction.add(R.id.content_frame, mainFragment1).commitAllowingStateLoss();
+        switchBottomIcon(wddd_item);
     }
 
     @Override
@@ -57,72 +72,67 @@ public class SlideMainActivity extends BaseActiviy<SlideMainPresenter> implement
 
         switch (viewId) {
             //底部菜栏 上面的按钮  展示当前点击条目 同时展示当前条目 是被点击
-           
-            //查运价
+
+            //第一页面
             case R.id.wddd_item:
-                mPresenter.showFragment(viewId);
-                switchBottomIcon(viewId);
+                cutFragment(fragment, mainFragment1);
+                switchBottomIcon(wddd_item);
                 break;
-            //发车
+            //第二页面
             case R.id.fkw_item:
-                mPresenter.showFragment(viewId);
-                switchBottomIcon(viewId);
+                cutFragment(fragment, mainFragment2);
+                switchBottomIcon(fkw_item);
                 break;
 
-            //看订单
+            //第三页面
             case R.id.wdzx_item:
-                mPresenter.showFragment(viewId);
-                switchBottomIcon(viewId);
+                cutFragment(fragment, mainFragment3);
+                switchBottomIcon(wdzx_item);
                 break;
-            //空位
+            //第四页面
             case R.id.wdcy_item:
-                mPresenter.showFragment(viewId);
-                switchBottomIcon(viewId);
+                cutFragment(fragment, mainFragment4);
+                switchBottomIcon(wdcy_item);
                 break;
-        
+
         }
     }
 
     @Override
     protected SlideMainPresenter getLoadPresenter() {
-
         SlideMainPresenter mSlideMainPresenter;
         mSlideMainPresenter = new SlideMainPresenter();
         return mSlideMainPresenter;
     }
 
-
-    public void switchBottomIcon(int id) {
-        switch (id) {
-            //抢空位
-            case R.id.wdcy_item:
-                wdcy_item.setSelected(true);
-                wddd_item.setSelected(false);
-                fkw_item.setSelected(false);
-                wdzx_item.setSelected(false);
-                break;
-            //查运价
-            case R.id.wddd_item:
-                wdcy_item.setSelected(false);
-                wddd_item.setSelected(true);
-                fkw_item.setSelected(false);
-                wdzx_item.setSelected(false);
-                break;
-            //发车
-            case R.id.fkw_item:
-                wdcy_item.setSelected(false);
-                wddd_item.setSelected(false);
-                fkw_item.setSelected(true);
-                wdzx_item.setSelected(false);
-                break;
-            //看订单
-            case R.id.wdzx_item:
-                wdcy_item.setSelected(false);
-                wddd_item.setSelected(false);
-                fkw_item.setSelected(false);
-                wdzx_item.setSelected(true);
-                break;
-
+    /**
+     * 切换fragment
+     *
+     * @param f1 现在看见的 fragment
+     * @param f2 切换变到的 fragment
+     */
+    public void cutFragment(Fragment f1, Fragment f2) {
+        if (f2 != f1) {
+            FragmentTransaction mFragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragment = f2;
+            if (!f2.isAdded()) {
+                mFragmentTransaction.hide(f1).add(R.id.content_frame, f2).commitAllowingStateLoss();
+            } else {
+                mFragmentTransaction.hide(f1).show(f2).commitAllowingStateLoss();
+            }
         }
+    }
+
+    /**
+     * 切换 底部 按钮的 样式
+     *
+     * @param showView 显示的按钮样式
+     */
+    public void switchBottomIcon(View showView) {
+        wdcy_item.setSelected(false);
+        wddd_item.setSelected(false);
+        fkw_item.setSelected(false);
+        wdzx_item.setSelected(false);
+        showView.setSelected(true);
     }
 }
