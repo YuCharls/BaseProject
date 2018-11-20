@@ -20,22 +20,25 @@ public abstract class CommonSubscriber<T> extends BaseSubscriber<T> {
 
     private Context context;
 
-
-    public CommonSubscriber(Context context, T t) {
-        super(t);
-        this.context = context;
-
+    public CommonSubscriber() {
+        super();
     }
 
-    protected CommonSubscriber(T t) {
-        super(t);
-    }
+//    public CommonSubscriber(Context context, T t) {
+//        super(t);
+//        this.context = context;
+//
+//    }
+
+//    protected CommonSubscriber(T t) {
+//        super(t);
+//    }
 
     @Override
     public void onNext(String jsonString) {
         super.onNext(jsonString);
     }
-    
+
 
     @Override
     protected void onError(ApiException e) {

@@ -53,7 +53,7 @@ public class LoginModel extends BaseModel {
 
         httpService.login(body)
                 .compose(new CommonTransformer<String>())
-                .subscribe(new CommonSubscriber<LoginResponseBean>(ProApplication.getmContext(), new LoginResponseBean()) {
+                .subscribe(new CommonSubscriber<LoginResponseBean>() {
 
                     @Override
                     public void onSubscribe(Disposable d) {

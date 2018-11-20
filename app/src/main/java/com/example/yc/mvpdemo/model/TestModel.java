@@ -33,14 +33,14 @@ public class TestModel extends BaseModel {
 
     private RequestBody body;
 
-    public boolean testModel(@NonNull String month, 
+    public boolean testModel(@NonNull String month,
                              @NonNull String day,
                              @NonNull final InfoHint infoHint) {
 
         if (infoHint == null) {
             throw new RuntimeException("InfoHint不能为空");
         }
-        
+
         HashMap<String, String> params = new HashMap<>();
         params.put("v", "1.0");
         params.put("month", month);
@@ -49,18 +49,15 @@ public class TestModel extends BaseModel {
 
         httpService.loginPost(params)
                 .compose(new CommonTransformer<String>())
-                .subscribe(new CommonSubscriber<TestBean>(ProApplication.getmContext(), new TestBean()) {
-
+                .subscribe(new CommonSubscriber<TestBean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
-
                     @Override
                     public void onComplete() {
 
                     }
-
                     @Override
                     public void onSuccess(TestBean mTestBean) {
                         LogUtil.i(TAG, ",onNext: " + mTestBean.toString());

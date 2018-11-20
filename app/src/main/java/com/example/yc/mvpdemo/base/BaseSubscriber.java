@@ -1,9 +1,12 @@
 package com.example.yc.mvpdemo.base;
 
 
-
 import com.example.yc.mvpdemo.exception.ApiException;
 import com.example.yc.mvpdemo.utils.GsonUtil;
+import com.example.yc.mvpdemo.utils.LogUtil;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 import io.reactivex.Observer;
 
@@ -15,21 +18,36 @@ import io.reactivex.Observer;
  */
 
 public abstract class BaseSubscriber<T> implements Observer<String> {
+    private static final String TAG = "BaseSubscriber";
+    
+//    private T t;
+//    private Class<T> clazz;
 
-    private T t1;
+    private Type type;
 
-    protected BaseSubscriber(T t) {
+    protected BaseSubscriber() {
         super();
-        this.t1 = t;
+        Type genType = getClass().getGenericSuperclass();
+        //兼容泛型嵌套
+        type = ((ParameterizedType) genType).getActualTypeArguments()[0];
 
+        LogUtil.i(TAG, ",onNext: type:" + type);
     }
 
+//    protected BaseSubscriber(T t) {
+//        super();
+//        this.t = t;
+//        Type genType = getClass().getGenericSuperclass();
+//        type = ((ParameterizedType) genType).getActualTypeArguments()[0];//兼容泛型嵌套
+//    }
+
+    @SuppressWarnings("unchecked")
     @Override
     public void onNext(String jsonString) {
-
-        T t = (T) GsonUtil.GsonToBean(jsonString, t1.getClass());
-
-        onSuccess(t);
+        T t = GsonUtil.GsonToBean(jsonString, type);
+        if (t != null) {
+            onSuccess(t);
+        }
 
     }
 

@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -50,11 +51,11 @@ public class GsonUtil {
      * 将gsonString转成泛型bean
      * 包含AES 解密
      *
-     * @param gsonString
+     * @param gSonString
      * @param cls
      * @return
      */
-    public static <T> T GsonToBean(String gsonString, Class<T> cls) {
+    public static <T> T GsonToBean(String gSonString, Class<T> cls) {
 //        //AES 解密
 //        String decodeGsonString = AESUtil.decode(gsonString, "ycgjappdepart123");
 //
@@ -62,7 +63,29 @@ public class GsonUtil {
 
         T t = null;
         if (gson != null) {
-            t = gson.fromJson(gsonString, cls);
+            t = gson.fromJson(gSonString, cls);
+        }
+        return t;
+    }
+
+
+    /**
+     * 将gsonString转成泛型bean
+     * 包含AES 解密
+     *
+     * @param gSonString
+     * @param type
+     * @return
+     */
+    public static <T> T GsonToBean(String gSonString, Type type) {
+//        //AES 解密
+//        String decodeGsonString = AESUtil.decode(gsonString, "ycgjappdepart123");
+//
+//        LogUtil.i(TAG, ",GsonToBean: 解密" + decodeGsonString);
+
+        T t = null;
+        if (gson != null) {
+            t = gson.fromJson(gSonString, type);
         }
         return t;
     }
